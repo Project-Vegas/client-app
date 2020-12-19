@@ -1,15 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-import Appbar from './components/Appbar';
+import AppbarTitle from './components/AppbarTitle';
 import Container from './components/Container';
 
 export default function App() {
   return (
     <Container>
-      <Appbar>
-        <Text>Hello World</Text>
-      </Appbar>
+      <AppbarTitle title="Hello World" edit cross />
     </Container>
   );
 }
