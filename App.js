@@ -4,6 +4,11 @@ import { NativeRouter, Route, Switch, BackButton } from 'react-router-native'
 import StateContext from './context/StateContext'
 
 import Navbar from './components/Navbar'
+import AppbarTitle from './components/AppbarTitle'
+import Container from './components/Container'
+
+import Home from './pages/Home'
+import AddItemPage from './pages/AddItem'
 
 const styles = StyleSheet.create({
   container: {
@@ -28,15 +33,21 @@ const App = () => {
           <View style={styles.container}>
             <Switch>
               <Route path='/additem'>
-                <Text>Add item page</Text>
+                <AddItemPage />
                 <Navbar />
               </Route>
               <Route path='/history'>
-                <Text>Updates page</Text>
+                <Container>
+                  <AppbarTitle title="Updates" />
+                  <Text>Updates</Text>
+                </Container>
                 <Navbar />
               </Route>
               <Route path='/sales'>
-                <Text>Sales page</Text>
+                <Container>
+                  <AppbarTitle title="Sales" />
+                  <Text>Sales</Text>
+                </Container>
                 <Navbar />
               </Route>
               <Route path='/scan'>
@@ -47,7 +58,7 @@ const App = () => {
                 <Navbar />
               </Route>
               <Route path='/' exact>
-                <Text>Home</Text>
+                <Home />
                 <Navbar />
               </Route>
             </Switch>
