@@ -4,11 +4,13 @@ import { NativeRouter, Route, Switch, BackButton } from 'react-router-native'
 import StateContext from './context/StateContext'
 
 import Navbar from './components/Navbar'
-import AppbarTitle from './components/AppbarTitle'
-import Container from './components/Container'
-
 import Home from './pages/Home'
-import AddItemPage from './pages/AddItem'
+
+import BarCodeScannerExample from './components/BarcodeScanner'
+import AddItemPage from './pages/AddItemPage'
+import UpdateHistory from './pages/UpdateHistory'
+import Sales from './pages/Sales'
+import Item from './pages/Item'
 
 const styles = StyleSheet.create({
   container: {
@@ -37,24 +39,18 @@ const App = () => {
                 <Navbar />
               </Route>
               <Route path='/history'>
-                <Container>
-                  <AppbarTitle title="Updates" />
-                  <Text>Updates</Text>
-                </Container>
+                <UpdateHistory />
                 <Navbar />
               </Route>
               <Route path='/sales'>
-                <Container>
-                  <AppbarTitle title="Sales" />
-                  <Text>Sales</Text>
-                </Container>
+                <Sales />
                 <Navbar />
               </Route>
               <Route path='/scan'>
-                <Text>Scanner</Text>
+                <BarCodeScannerExample />
               </Route>
               <Route path='/item/:id'>
-                <Text>Individual item</Text>
+                <Item />
                 <Navbar />
               </Route>
               <Route path='/' exact>

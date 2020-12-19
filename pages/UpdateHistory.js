@@ -4,11 +4,11 @@ import { Text } from 'react-native'
 import AppbarSearch from '../components/AppbarSearch'
 import Container from '../components/Container'
 
-export default function Sales() {
+export default function UpdateHistory() {
   return (
     <Container>
       <AppbarSearch />
-      <Text>Add item 🧮 </Text>
+      <Text>Updates!</Text>
     </Container>
   )
 }

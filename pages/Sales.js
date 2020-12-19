@@ -8,7 +8,7 @@ export default function Sales() {
   return (
     <Container>
       <AppbarSearch />
-      <Text>Add item 🧮 </Text>
+      <Text>Sales</Text>
     </Container>
   )
 }
