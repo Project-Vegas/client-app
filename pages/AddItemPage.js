@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native'
 import { useHistory } from 'react-router-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
@@ -7,6 +7,7 @@ import { faQrcode, faICursor } from '@fortawesome/free-solid-svg-icons'
 import AppbarTitle from '../components/AppbarTitle'
 import Container from '../components/Container'
 import { theme } from '../styles/theme'
+import StateContext from '../context/StateContext'
 
 const styles = StyleSheet.create({
   root: {
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
 })
 export default function AddItemPage() {
   const history = useHistory()
+  const [state, setState] = useContext(StateContext)
 
   return (
     <Container>
@@ -48,14 +50,18 @@ export default function AddItemPage() {
             <Text style={styles.text}> Scan code</Text>
           </View>
         </TouchableNativeFeedback>
-        <TouchableNativeFeedback onPress={() => {
-          history.push('/item/_')
-        }}>
-          <View style={styles.button}>
-            <FontAwesomeIcon icon={faICursor} size={30} color={theme.colors.textPrimary} />
-            <Text style={styles.text}> Type code</Text>
-          </View>
-        </TouchableNativeFeedback>
+        {
+          state.user.role === 'manager' ?
+            <TouchableNativeFeedback onPress={() => {
+              history.push('/item/_')
+            }}>
+              <View style={styles.button}>
+                <FontAwesomeIcon icon={faICursor} size={30} color={theme.colors.textPrimary} />
+                <Text style={styles.text}> Type code</Text>
+              </View>
+            </TouchableNativeFeedback>
+            : null
+        }
       </View>
     </Container>
   )

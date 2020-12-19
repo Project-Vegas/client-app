@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { View, Text, StyleSheet, TextInput, Alert } from 'react-native'
 
 import AppbarTitle from './AppbarTitle'
@@ -10,6 +10,7 @@ import { categoryToIconMap } from '../utils/categoryToIconMap'
 import SubmitButton from './SubmitButton'
 import { baseURL } from '../utils/baseURL'
 import { useHistory } from 'react-router-native'
+import StateContext from '../context/StateContext'
 
 const styles = StyleSheet.create({
   container: {
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
 export default function EditItem({ item, setCurrentState}) {
   const history = useHistory()
   const [newItem, setNewItem] = useState(item)
-  // const [qtyChange, setQtyChange] = useState(0)
+  const [state, setState] = useContext(StateContext)
 
   const handleFormSubmit = () => {
     if (newItem.price !== item.price || newItem.quantity !== item.quantity) {
@@ -121,17 +122,22 @@ export default function EditItem({ item, setCurrentState}) {
           </View>
           <View style={styles.row}>
             <Text style={styles.text}>Price: ₹</Text>
-            <TextInput
-              style={styles.inputStyle}
-              keyboardType="numeric"
-              value={String(newItem.price)}
-              onChangeText={text => {
-                setNewItem({
-                  ...newItem,
-                  price: text
-                })
-              }}
-            />
+            {
+              state.user.role !== 'employee' ?
+                <TextInput
+                  style={styles.inputStyle}
+                  keyboardType="numeric"
+                  value={String(newItem.price)}
+                  onChangeText={text => {
+                    setNewItem({
+                      ...newItem,
+                      price: text
+                    })
+                  }}
+                />
+              :
+                <Text style={styles.text}>{newItem.price}</Text>
+            }
           </View>
           <View style={styles.row}>
             <Text style={styles.text}>Availabilibity: </Text>

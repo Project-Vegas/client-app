@@ -1,12 +1,12 @@
 import React, { useContext, useRef } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
-import { Redirect } from 'react-router-native'
+import { View, StyleSheet, Alert } from 'react-native'
 import t from 'tcomb-form-native'
 
 import Container from '../components/Container'
 import AppbarTitle from '../components/AppbarTitle'
 import SubmitButton from '../components/SubmitButton'
 import StateContext from '../context/StateContext'
+import users from '../users'
 
 const styles = StyleSheet.create({
   root: {
@@ -47,7 +47,16 @@ const Login = () => {
   const handleFormSubmit = () => {
     const value = form.current.getValue()
     if (value) {
-      setState({ ...state, user: value })
+      const loggingInUser = users.find(user => (
+        user.username === value.username && user.password === value.password
+      ))
+      console.log(loggingInUser)
+      if (loggingInUser) {
+        setState({ ...state, user: loggingInUser })
+      }
+      else {
+        Alert.alert('Uh oh!', 'You entered invalid credentials')
+      }
     }
   }
 

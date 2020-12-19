@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { faHome, faPlus, faHistory, faChartLine } from '@fortawesome/free-solid-svg-icons'
 import { useHistory } from 'react-router-native'
 
 import Button from './Button'
 import { theme } from '../styles/theme'
+import StateContext from '../context/StateContext'
 
 const styles = StyleSheet.create({
   container: {
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const navItems = [{
+const navItemsEmployee = [{
   title: 'Home',
   link: '/',
   icon: faHome,
@@ -30,7 +31,10 @@ const navItems = [{
   title: 'Add',
   link: '/additem',
   icon: faPlus,
-}, {
+}]
+
+const navItems = [
+  ...navItemsEmployee, {
   title: 'History',
   link: '/history',
   icon: faHistory,
@@ -42,6 +46,19 @@ const navItems = [{
 
 export default function Navbar() {
   const history = useHistory()
+  const [state, setState] = useContext(StateContext)
+
+  if (state.user.role === 'employee') {
+    return (
+      <View style={styles.container}>
+        {
+          navItemsEmployee.map((item, index) => (
+            <Button key={index} onPress={() => { history.push(item.link) }} icon={item.icon} />
+          ))
+        }
+      </View>
+    )
+  }
 
   return (
     <View style={styles.container}>

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import React, { useContext, useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { useParams } from 'react-router-native'
+import { View, Text, StyleSheet, Alert } from 'react-native'
+import { Redirect, useParams } from 'react-router-native'
 
 import AppbarTitle from '../components/AppbarTitle'
 import Container from '../components/Container'
@@ -35,11 +35,19 @@ export default function Item() {
   const [currentState, setCurrentState] = useState('view')
 
   const item = state.items.find(d => d.product_id === id)
-  if (!item) {
+  if (!item && state.user.role !== 'employee') {
     return (
       <AddItem id={id} />
     )
   }
+
+  if (!item) {
+    Alert.alert('Item does not exist')
+    return (
+      <Redirect to='/' />
+    )
+  }
+
   if (currentState === 'edit') {
     return (
       <EditItem item={item} setCurrentState={setCurrentState} />
