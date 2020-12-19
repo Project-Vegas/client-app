@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { View, StyleSheet } from 'react-native'
 import Constants from 'expo-constants'
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
+import Button from './Button'
 import { theme } from '../styles/theme'
+import StateContext from '../context/StateContext'
+import { Redirect } from 'react-router-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -26,9 +30,18 @@ const styles = StyleSheet.create({
 })
 
 export default function Appbar({ children }) {
+  const [state, setState] = useContext(StateContext)
+
+  const onSignoutPress = () => {
+    setState({ ...state, user: null })
+  }
+
   return (
     <View style={styles.container}>
       {children}
+      <View>
+        <Button onPress={onSignoutPress} style={styles.buttonWrapper} icon={faSignOutAlt} />
+      </View>
     </View>
   )
 }

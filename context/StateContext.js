@@ -6,5 +6,6 @@ const StateContext = React.createContext([{
   dateTo: '',
   items: [],
   updates: [],
+  user: null,
 }, () => {}])
 export default StateContext

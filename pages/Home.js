@@ -4,10 +4,12 @@ import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
 import StateContext from '../context/StateContext'
 import { theme } from '../styles/theme'
 import Container from '../components/Container'
+import Navbar from '../components/Navbar'
 import StyledScrollView from '../components/StyledScrollView'
 import AppbarSearch from '../components/AppbarSearch'
 import ItemCard from '../components/ItemCard'
 import { baseURL } from '../utils/baseURL'
+import Login from './Login'
 
 const styles = StyleSheet.create({
   textContainer: {
