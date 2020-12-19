@@ -1,6 +1,5 @@
 import React from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
-import { theme } from '../styles/theme'
 
 const styles = StyleSheet.create({
   container: {

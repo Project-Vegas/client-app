@@ -1,24 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
+import Appbar from './components/Appbar';
+import Container from './components/Container';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello world</Text>
-      <FontAwesomeIcon size={26} icon={faSearch} />
-      <StatusBar style="auto" />
-    </View>
+    <Container>
+      <Appbar>
+        <Text>Hello World</Text>
+      </Appbar>
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
