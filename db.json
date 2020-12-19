@@ -1,0 +1,49 @@
+{
+  "items": [
+    {
+      "id": "8902519002341",
+      "name": "Classmate Notebook",
+      "description": "Single Line Notebooks",
+      "quantity_available": "120",
+      "units": "units",
+      "price": "55.00",
+      "category": "stationary"
+    },
+    {
+      "id": "8902319102341",
+      "name": "Maggie Noodles",
+      "description": "Noodles",
+      "quantity_available": "220",
+      "units": "units",
+      "price": "45.00",
+      "category": "food"
+    },
+    {
+      "id": "8902329012341",
+      "name": "Reynolds Trimax",
+      "description": "Blue Gel Pen",
+      "quantity_available": "530",
+      "units": "units",
+      "price": "30.00",
+      "category": "stationary"
+    },
+    {
+      "id": "8902143012341",
+      "name": "Kurkure",
+      "description": "Fried Namkeen",
+      "quantity_available": "230",
+      "units": "units",
+      "price": "20.00",
+      "category": "food"
+    },
+    {
+      "id": "8902196012341",
+      "name": "Frooti",
+      "description": "Mango Drink",
+      "quantity_available": "430",
+      "units": "units",
+      "price": "55.00",
+      "category": "food"
+    }
+  ]
+}
