@@ -27,14 +27,18 @@ const styles = StyleSheet.create({
 
 export default function Search() {
   const [state, setState] = useContext(StateContext)
+  const [formValue, setFormValue] = useState('')
 
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.textInput}
         placeholder={'Type to Search'}
-        value={state.itemSearchTerm}
-        onChangeText={text => setState({ ...state, itemSearchTerm: text.toLowerCase() })}
+        value={formValue}
+        onChangeText={text => {
+          setFormValue(text)
+          setState({ ...state, itemSearchTerm: text.toLowerCase() })
+        }}
       />
       {
         state.itemSearchTerm.length > 0 ?
