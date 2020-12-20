@@ -6,8 +6,6 @@ import ConnectLogin from './pages/ConnectLogin'
 const App = () => {
   const initialState = {
     itemSearchTerm: '',
-    dateFrom: '',
-    dateTo: '',
     items: null,
     user: null,
   }
