@@ -12,4 +12,8 @@ Inventory Management client app made with React Native
 
 ## Sneak Peek into the app
 
-![Home page](images/home.jpeg)  ![Updates page](images/updates.jpeg)  ![Sales page](images/sales.jpeg)
+<img src="images/home.jpeg" alt="Home page" width="270" height="585" />
+
+<img src="images/updates.jpeg" alt="Updates page" width="270" height="585" />
+
+<img src="images/sales.jpeg" alt="Sales page" width="270" height="585" />
